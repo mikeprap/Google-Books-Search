@@ -1,6 +1,7 @@
-import React, {Component} from 'react'
-import Search from './Search'
-import API from '../utils/API'
+import React, {Component} from 'react';
+import Search from './Search';
+import API from '../utils/API';
+import BookList from './BookList';
 
 
 
@@ -18,8 +19,11 @@ class Books extends Component {
         event.preventDefault();
         API.searchBook(this.state.searchField)
         
-        .then(res => {
-            console.log(res)
+        .then(data => {
+            
+            
+            
+            this.setState({books: [...data.body.items]})
         })
         }
 
@@ -35,6 +39,7 @@ class Books extends Component {
         handleSearch={this.handleSearch} 
         handleFormSubmit={this.handleFormSubmit}
         />
+        <BookList books={this.state.books}/>
        
       </div>
     );
