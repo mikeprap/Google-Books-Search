@@ -1,10 +1,17 @@
 import React from 'react'
 
-const Search = () => {
+const Search = (props) => {
     return(
-        <div className="search-area">
-            <form action="">
-                <input type="text"/>
+        <div className="search">
+            <form 
+            onSubmit={props.handleFormSubmit}
+            action=""
+            >
+                <input 
+                type="text"
+                onChange={props.handleSearch}
+                />
+                <button type="submit">Search</button>
             </form>
         </div>
     )
